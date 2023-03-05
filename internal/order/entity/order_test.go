@@ -46,3 +46,11 @@ func TestGivenANotValidParams_WhenICallNewOrderFunc_ThenShouldReceiveAnError(t *
 	assert.Equal(t, 1.0, order.Tax)
 
 }
+
+func TestGivenPriceTax_WhenICallCalculatePrice_ThanItShouldSetFinalPrice(t *testing.T) {
+	order, err := NewOrder("123", 10.2, 1.8)
+	assert.Nil(t, err)
+	assert.Nil(t, order.CalculateFinalPrice())
+	assert.Equal(t, order.FinalPrice, 12.0)
+
+}
